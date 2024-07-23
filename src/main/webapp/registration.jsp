@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -34,7 +35,8 @@
 <div id="limiter" class="limiter fade-in">
     <div class="container-login100">
         <div id="reg-log-wrap" class="wrap">
-            <form action="<%= request.getContextPath()%>/register" id="registration-form" class="login100-form validate-form" method="post">
+            <form action="<%= request.getContextPath()%>/register" id="registration-form"
+                  class="login100-form validate-form" method="post">
                     <span class="login100-form-title p-b-26">
                         Registration
                     </span>
@@ -45,9 +47,6 @@
                     <span class="focus-input100" data-placeholder="Username"></span>
                 </div>
                 <div class="wrap-input100 validate-input" data-validate="Enter email">
-                        <span class="btn-show-pass">
-                            <i class="zmdi zmdi-eye"></i>
-                        </span>
                     <input id="log-email" class="input100" type="email" name="email">
                     <span class="focus-input100" data-placeholder="Email"></span>
                 </div>
@@ -94,6 +93,26 @@
         </div>
     </div>
 </div>
+<footer>
+    <p>&copy; 2024 My To-Do List App by <a href="https://github.com/playtlancher">playtlancher</a></p>
+</footer>
+<script src="./vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="./vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="./vendor/bootstrap/js/popper.js"></script>
+<script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="./vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="./vendor/daterangepicker/moment.min.js"></script>
+<script src="./vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="./vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="./js/login.js"></script>
+
+
 </body>
 </html>
 </html>

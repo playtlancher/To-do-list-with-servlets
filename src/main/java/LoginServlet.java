@@ -1,9 +1,6 @@
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -35,15 +32,24 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         session.setAttribute("enteredUsername", username);
-        session.setAttribute("enteredPassword", password);
 
         if (hasher.checkPassword(password, hashedPassword)) {
-            session.setAttribute("message", "Successfully logged in");
             session.setAttribute("EnteredUsername",null);
-            session.setAttribute("EnteredPassword",null);
+
+            Cookie cookieUser = new Cookie("username",username);
+            Cookie cookiePassword = new Cookie("password",hashedPassword);
+
+            cookieUser.setMaxAge(3600);
+            cookiePassword.setMaxAge(3600);
+
+
+            response.addCookie(cookieUser);
+            response.addCookie(cookiePassword);
+
+            response.sendRedirect(request.getContextPath() + "/taskPage.jsp");
         }else {
             session.setAttribute("message", "Wrong username or password");
+            response.sendRedirect(request.getContextPath() + "/login");
         }
-        response.sendRedirect(request.getContextPath() + "/login");
     }
 }

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
@@ -24,12 +25,12 @@
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
-    <title>Title</title>
+    <title>Sign in</title>
 </head>
 <body>
 <div id="limiter" class="limiter fade-in">
     <div class="container-login100">
-        <div id="reg-log-wrap" class="wrap">
+        <div class="wrap">
             <form action="<%= request.getContextPath()%>/login" id="login-form" class="login100-form validate-form"
                   method="post">
                     <span class="login100-form-title p-b-26">
@@ -37,7 +38,6 @@
                     </span>
                 <%
                     String enteredUsername = (String) session.getAttribute("enteredUsername");
-                    String enteredPassword = (String) session.getAttribute("enteredPassword");
                 %>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter username">
@@ -46,11 +46,16 @@
                     <span class="focus-input100" data-placeholder="Username"></span>
                 </div>
                 <div class="wrap-input100 validate-input" data-validate="Enter password">
-                    <input id="log-password" class="input100" type="password" name="password"
-                           value="<%= enteredPassword != null ? enteredPassword : "" %>">
+                    <span class="btn-show-pass">
+                        <i class="zmdi zmdi-eye"></i>
+                    </span>
+                    <input id="log-password" class="input100" type="password" name="password">
                     <span class="focus-input100" data-placeholder="Password"></span>
                 </div>
-
+                <div>
+                    <input type="checkbox">
+                    <span>Remember me</span>
+                </div>
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
@@ -79,6 +84,27 @@
         </div>
     </div>
 </div>
+<footer>
+    <p>&copy; 2024 My To-Do List App by <a href="https://github.com/playtlancher">playtlancher</a></p>
+</footer>
+<script src="./vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="./vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="./vendor/bootstrap/js/popper.js"></script>
+<script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="./vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="./vendor/daterangepicker/moment.min.js"></script>
+<script src="./vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="./vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="./js/login.js"></script>
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>
 
 </body>
 </html>
