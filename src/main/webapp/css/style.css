@@ -10,7 +10,10 @@
 #task-page {
     flex-direction: column;
 }
-
+.poppins-regular{
+    font-family: Poppins-Regular;
+    src: url('../fonts/poppins/Poppins-Regular.ttf');
+}
 #task-form {
     width: 100vh;
     flex-direction: column;
@@ -68,15 +71,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 100%;
 }
 
-
-
-
 ul li>* {
     margin-right: 0.7rem;
-}
-
-* {
-    font-family: sans-serif;
 }
 
 .task-button {

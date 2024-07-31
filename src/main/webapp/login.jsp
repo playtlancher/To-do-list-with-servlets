@@ -54,7 +54,7 @@
                 </div>
                 <div>
                     <input type="checkbox">
-                    <span>Remember me</span>
+                    <span class="poppins-regular">Remember me</span>
                 </div>
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
@@ -66,9 +66,10 @@
                 </div>
             </form>
             <%
+                session.removeAttribute("Username");
                 String message = (String) session.getAttribute("message");
                 if (message != null) {
-                    out.print("<div class='p-t-16 text-center fs-16'>" + message + "</div>");
+                    out.print("<div class='p-t-16 text-center fs-16 poppins-regular'>" + message + "</div>");
                     session.removeAttribute("message");
                 }
             %>
@@ -103,6 +104,21 @@
 <!--===============================================================================================-->
 <script src="./js/login.js"></script>
 <script type="module" src="./js/main.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const params = new URLSearchParams(window.location.search);
+        const autoLogin = params.get('autoLogin');
+
+            fetch('<%= request.getContextPath() %>/auto-login')
+                .then(response => {
+                    if (response.redirected) {
+                        window.location.href = response.url;
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+    });
+</script>
+
 </body>
 </html>
 

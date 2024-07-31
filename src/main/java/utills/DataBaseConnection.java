@@ -1,3 +1,5 @@
+package utills;
+
 import java.sql.*;
 
 public class DataBaseConnection {
