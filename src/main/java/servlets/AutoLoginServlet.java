@@ -1,5 +1,5 @@
 package servlets;
-import Classes.User;
+import models.User;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;

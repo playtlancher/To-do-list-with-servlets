@@ -1,10 +1,9 @@
 package mappers;
 
-import Classes.User;
+import models.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
 
 public class UserMapper {
 

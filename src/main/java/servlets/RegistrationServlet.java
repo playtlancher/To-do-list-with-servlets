@@ -1,6 +1,7 @@
 package servlets;
 
-import Classes.User;
+import jakarta.servlet.http.HttpSession;
+import models.User;
 import dao.impl.UserDaoImpl;
 import services.UserService;
 import services.impl.UserServiceImpl;
@@ -50,10 +51,15 @@ public class RegistrationServlet extends HttpServlet {
 
             try {
                 userService.registration(user);
-                response.sendRedirect(request.getContextPath() + "/register");
+                user = userService.login(user);
+                HttpSession session = request.getSession();
+                session.setAttribute("id", user.getId());
+                session.setAttribute("name", user.getName());
+                session.setAttribute("email", user.getEmail());
+                response.sendRedirect(request.getContextPath() + "/taskPage");
             } catch (UserWithThisNameAlreadyExistException | UserWithThisEmailAlreadyExistException | SQLException e) {
                 e.printStackTrace();
-//            response.setStatus(HttpServletResponse.SC_CONFLICT);
+            response.setStatus(HttpServletResponse.SC_CONFLICT);
             }
         }
 

@@ -1,6 +1,6 @@
 package servlets;
 
-import Classes.User;
+import models.User;
 import dao.impl.UserDaoImpl;
 import exceptions.IncorrectUsernameOrPasswordException;
 import jakarta.servlet.ServletException;
@@ -38,17 +38,21 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         HttpSession session = request.getSession();
 
-
         User user = new User(username, password);
-        try {
-            user = userService.login(user);
-            session.setAttribute("id", user.getId());
-            session.setAttribute("name", user.getName());
-            session.setAttribute("email", user.getEmail());
-            response.sendRedirect("taskPage.jsp");
-        } catch (IncorrectUsernameOrPasswordException | SQLException e) {
+        if (user.isValidUser()) {
+            try {
+                user = userService.login(user);
+                session.setAttribute("id", user.getId());
+                session.setAttribute("name", user.getName());
+                session.setAttribute("email", user.getEmail());
+                response.sendRedirect("taskPage");
+            } catch (IncorrectUsernameOrPasswordException | SQLException e) {
+                session.setAttribute("message", "Wrong username or password");
+                response.sendRedirect(request.getContextPath() + "/login");
+            }
+        } else {
             session.setAttribute("message", "Wrong username or password");
-            response.sendRedirect(request.getContextPath() + "/login");
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
     }
 }

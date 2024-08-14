@@ -1,6 +1,6 @@
 package dao.impl;
 
-import Classes.User;
+import models.User;
 import dao.UserDao;
 import mappers.UserMapper;
 import utills.MySQLConnector;

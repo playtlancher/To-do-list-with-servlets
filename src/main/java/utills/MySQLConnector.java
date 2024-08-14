@@ -17,12 +17,15 @@ public class MySQLConnector implements Connector {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
         Connection connection = null;
+
         try {
             connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
         return connection;
     }
 }

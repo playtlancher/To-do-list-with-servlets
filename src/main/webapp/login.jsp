@@ -36,13 +36,10 @@
                     <span class="login100-form-title p-b-26">
                         Welcome
                     </span>
-                <%
-                    String enteredUsername = (String) session.getAttribute("enteredUsername");
-                %>
+
 
                 <div class="wrap-input100 validate-input" data-validate="Enter username">
-                    <input id="log-username" class="input100" type="text" name="username"
-                           value="<%= enteredUsername != null ? enteredUsername : "" %>">
+                    <input id="log-username" class="input100" type="text" name="username">
                     <span class="focus-input100" data-placeholder="Username"></span>
                 </div>
                 <div class="wrap-input100 validate-input" data-validate="Enter password">
@@ -66,7 +63,6 @@
                 </div>
             </form>
             <%
-                session.removeAttribute("Username");
                 String message = (String) session.getAttribute("message");
                 if (message != null) {
                     out.print("<div class='p-t-16 text-center fs-16 poppins-regular'>" + message + "</div>");
@@ -104,20 +100,20 @@
 <!--===============================================================================================-->
 <script src="./js/login.js"></script>
 <script type="module" src="./js/main.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const params = new URLSearchParams(window.location.search);
-        const autoLogin = params.get('autoLogin');
+<%--<script>--%>
+<%--    document.addEventListener("DOMContentLoaded", function() {--%>
+<%--        const params = new URLSearchParams(window.location.search);--%>
+<%--        const autoLogin = params.get('autoLogin');--%>
 
-            fetch('<%= request.getContextPath() %>/auto-login')
-                .then(response => {
-                    if (response.redirected) {
-                        window.location.href = response.url;
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-    });
-</script>
+<%--            fetch('<%= request.getContextPath() %>/auto-login')--%>
+<%--                .then(response => {--%>
+<%--                    if (response.redirected) {--%>
+<%--                        window.location.href = response.url;--%>
+<%--                    }--%>
+<%--                })--%>
+<%--                .catch(error => console.error('Error:', error));--%>
+<%--    });--%>
+<%--</script>--%>
 
 </body>
 </html>

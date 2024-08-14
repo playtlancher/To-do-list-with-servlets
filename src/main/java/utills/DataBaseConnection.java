@@ -25,7 +25,7 @@ public class DataBaseConnection {
             for (int i = 0; i < params.length; i++) {
                 statement.setObject(i + 1, params[i]);
             }
-            statement.executeUpdate(); // Виконання запиту
+            statement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
